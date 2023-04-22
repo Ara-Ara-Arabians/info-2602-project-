@@ -1,7 +1,8 @@
-
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
 from App.database import db
+
+import datetime
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -21,8 +22,8 @@ class Driver(db.Model):
     name = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), nullable=False)
     message = db.Column(db.String(2000), nullable=False)
-    timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-
+    timestamp = db.Column(db.DateTime(timezone = True), default = datetime.datetime.utcnow)
+  
 
     def __init__(self, username, password):
         self.username = username
