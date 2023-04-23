@@ -42,10 +42,15 @@ def login_action():
   return redirect('/login')
 
 @auth_views.route('/logout', methods=['GET'])
+@login_required
 def logout_action():
-    data = request.form
-    user = login(data['username'], data['password'])
-    return 'logged out!'
+  logout_user()
+  flash('Logged Out')
+  return redirect('/loggedout')
+
+@auth_views.route('/loggedout', methods=['GET'])
+def logout_page():
+    return render_template('logout.html')
 
 @auth_views.route('/login', methods=['GET'])
 def login_page():
