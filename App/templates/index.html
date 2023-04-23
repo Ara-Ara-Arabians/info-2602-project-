@@ -7,4 +7,26 @@
 {% block content %}
     <h1>KIMOCHII YAMATEE!</h1>
 
+    <div>
+        <table>
+            <tr>
+                <th>Origin</th>
+                <th>Destination</th> 
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Distance</th>
+            </tr>
+            {%for route in routes%}
+                <tr>
+                    <td>{{route.origin}}</td>
+                    <td>{{route.destination}}</td>
+                    <td>{{route.departure}}</td>
+                    <td>{{route.arrival}}</td>
+                    <td>{{route.distance}}</td>
+                </tr>
+            {%endfor%}
+        </table>
+
+    </div>
+
 {% endblock %}

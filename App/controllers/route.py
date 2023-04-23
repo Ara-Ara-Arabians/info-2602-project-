@@ -9,5 +9,10 @@ def create_route(origin, destination):
     db.session.commit()
     return newroute
 
+# def create_route(origin, destination, departure, arrival):
+#     newroute = Route(origin = origin, destination =destination, departure = departure, arrival= arrival)
+#     db.session.add(newroute)
+#     db.session.commit()
+
 def get_all_routes():
     return Route.query.all()
