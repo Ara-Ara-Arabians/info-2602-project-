@@ -43,10 +43,28 @@ def logout_action():
     user = login(data['username'], data['password'])
     return 'logged out!'
 
+@auth_views.route('/login', methods=['GET'])
+def login_page():
+    return render_template('login.html')
+
 @auth_views.route('/signup', methods=['GET'])
 def signup_page():
   return render_template('signup.html')
 
+@auth_views.route('/signup', methods=['POST'])
+def signup_action():
+  data = request.form 
+  newuser = User(username=data['username'], email=data['email'], password=data['password'])
+  try:
+    db.session.add(newuser)
+    db.session.commit() 
+    login_user(newuser)
+    flash('Account Created!') 
+    return redirect(url_for('index')) 
+  except Exception: 
+    db.session.rollback()
+    flash("username or email already exists") 
+  return redirect(url_for('index'))
 
 '''
 API Routes
