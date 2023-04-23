@@ -31,12 +31,15 @@ def identify_page():
 
 @auth_views.route('/login', methods=['POST'])
 def login_action():
-    data = request.form
-    user = login(data['username'], data['password'])
-    if user:
-        login_user(user)
-        return 'user logged in!'
-    return 'bad username or password given', 401
+  data = request.form
+  user = User.query.filter_by(username=data['username']).first()
+  if user and user.check_password(data['password']):  # check credentials
+    flash('Logged in successfully.')  # send message to next page
+    login_user(user)  # login the user
+    return redirect('/')  # redirect to main page if login successful
+  else:
+    flash('Invalid username or password')  # send message to next page
+  return redirect('/login')
 
 @auth_views.route('/logout', methods=['GET'])
 def logout_action():
