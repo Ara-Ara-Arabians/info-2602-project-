@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, jsonify, request, send_from_directory, flash, redirect, url_for
 from flask_jwt_extended import jwt_required, current_user as jwt_current_user
 from flask_login import login_required, login_user, current_user, logout_user
+from App.models import db
 
 from.index import index_views
 
@@ -54,6 +55,7 @@ def signup_page():
 @auth_views.route('/signup', methods=['POST'])
 def signup_action():
   data = request.form 
+  print("this is the signup button being pressed")
   newuser = User(username=data['username'], email=data['email'], password=data['password'])
   try:
     db.session.add(newuser)
