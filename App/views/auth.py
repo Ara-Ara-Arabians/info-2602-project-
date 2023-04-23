@@ -60,7 +60,7 @@ def signup_action():
     db.session.commit() 
     login_user(newuser)
     flash('Account Created!') 
-    return redirect(url_for('index')) 
+    return redirect(url_for('index.html')) 
   except Exception: 
     db.session.rollback()
     flash("username or email already exists") 
