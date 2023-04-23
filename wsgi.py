@@ -4,7 +4,7 @@ from flask.cli import with_appcontext, AppGroup
 
 from App.database import db, get_migrate
 from App.main import create_app
-from App.controllers import ( create_user, get_all_users_json, get_all_users )
+from App.controllers import ( create_user, get_all_users_json, get_all_users, create_route, get_all_routes )
 
 # This commands file allow you to create convenient CLI commands for testing controllers
 
@@ -23,20 +23,20 @@ def initialize():
 User Commands
 '''
 
+# routes_cli = AppGroup('drivenRoutes', help = 'transport routes driven')
 
-# #first try at populating routes
-# @click.command()
-# @click.argument('id')
-# @click.argument('name')
-# @click.argument('fare')
-# def create_route(id, name, fare):
-#     route = Route(id=id, name=name, fare=fare)
-#     db.session.add(route)
-#     db.session.commit()
-#     print("Route '{id}' created.")
+@app.cli.command("newroute")
+@click.argument("origin", default = "Port-of-Spain")
+@click.argument("destination", default = "San Fernando")
+def create_route_function(origin, destination):
+    create_route(origin, destination)
+    print("route created!!!!")
 
-# if __name__ == '__main__':
-#     create_route()
+@app.cli.command("listRoutes")
+def list_all_routes():
+    print(get_all_routes())
+
+
 # Commands can be organized using groups
 
 # create a group, it would be the first argument of the comand

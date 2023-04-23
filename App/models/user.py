@@ -15,16 +15,17 @@ class User(db.Model, UserMixin):
 
 
 
-
 class Route(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=True, nullable=False)
-    map_url = db.Column(db.String(200), nullable=False)#if we dont api then this redundant
-    schedule = db.Column(db.String(200), nullable=False)
-    fare = db.Column(db.Float, nullable=False)
+    origin = db.Column(db.String(120), nullable = False)   
+    destination = db.Column(db.String(120), nullable = False)
+    # name = db.Column(db.String(120), unique=True, nullable=False)
+    # map_url = db.Column(db.String(200), nullable=False)#if we dont api then this redundant
+    # schedule = db.Column(db.String(200), nullable=False)
+    # fare = db.Column(db.Float, nullable=False)
 
     def __repr__(self):
-        return '<Route %r>' % self.name
+        return self.origin + " " + self.destination
 
 class Driver(db.Model):
     id = db.Column(db.Integer, primary_key=True)
