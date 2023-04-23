@@ -43,6 +43,11 @@ def logout_action():
     user = login(data['username'], data['password'])
     return 'logged out!'
 
+@auth_views.route('/signup', methods=['GET'])
+def signup_page():
+  return render_template('signup.html')
+
+
 '''
 API Routes
 '''
