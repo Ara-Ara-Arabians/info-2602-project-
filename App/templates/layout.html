@@ -16,45 +16,10 @@
 
   </head>
   <body class="bg">
-    <nav class="navbar bg-dark  bg-body-tertiary" data-bs-theme="dark">
-      
-      <div class="container-fluid">
-        <a class="center navbar-brand" href="#!">
-          <img src="/images/Logo-removebg-preview.png" width="120" height="60" class="d-inline-block ">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <div><img src="/images/small-logo.png" class="justify-content-center" height="100" width="100" ></div>
-            <ul id="my-tabs" class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item">
-                <a id="home-link" class="nav-link" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a id="login-link" class="nav-link" href="/login">Log In</a>
-              </li>
-              <li class="nav-item">
-                <a id="signup-link" class="nav-link" href="/signup">Signup</a>
-              </li>
-              <li class="nav-item">
-                <a id="logout-link" class="nav-link" href="/logout">Logout</a>
-              </li>
-            </ul>
-            <form id="search" method="post" action="/search" class="d-flex" role="search">
-              <input class="form-control me-2" type="text" placeholder="Search" name="search_term" aria-label="Search">
-              <button class="btn" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </nav>
-    
+
+<!-- nav -->
+{% block nav %}{% endblock %} 
+<!-- body    -->
 {% block page %}{% endblock %}
         <!-- <div class="nav-wrapper">
             <ul id="nav-mobile" class="left">
