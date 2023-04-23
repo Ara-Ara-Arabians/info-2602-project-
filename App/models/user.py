@@ -10,6 +10,10 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
 
+    def __repr__(self):
+        return '<User %r>' % self.username
+
+
 class Route(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
@@ -17,12 +21,18 @@ class Route(db.Model):
     schedule = db.Column(db.String(200), nullable=False)
     fare = db.Column(db.Float, nullable=False)
 
+    def __repr__(self):
+        return '<Route %r>' % self.name
+
 class Driver(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), nullable=False)
     message = db.Column(db.String(2000), nullable=False)
     timestamp = db.Column(db.DateTime(timezone = True), default = datetime.datetime.utcnow)
+
+    def __repr__(self):
+        return '<ContactMessage %r>' % self.name
   
 
     def __init__(self, username, password):
