@@ -16,3 +16,6 @@ def create_route(origin, destination):
 
 def get_all_routes():
     return Route.query.all()
+
+def search_routes(search_word):
+    return Route.query.filter_by(origin = search_word).all()

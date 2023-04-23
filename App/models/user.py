@@ -41,6 +41,7 @@ class Route(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     origin = db.Column(db.String(120), nullable = False)   
     destination = db.Column(db.String(120), nullable = False)
+    vehicle = db.Column(db.String(30), nullable = False, default = "Taxi")
     departure = db.Column(db.DateTime(), default = datetime.datetime.utcnow)
     arrival = db.Column(db.DateTime(), default = datetime.datetime.utcnow)
     distance = db.Column(db.Double)

@@ -5,7 +5,7 @@
 {{ super() }}
 
 {% block content %}
-    <h1>KIMOCHII YAMATEE!</h1>
+    <h1>Heading</h1>
 
     <div>
         <table>
@@ -15,6 +15,7 @@
                 <th>Departure Time</th>
                 <th>Arrival Time</th>
                 <th>Distance</th>
+                <th>Vehicle</th>
             </tr>
             {%for route in routes%}
                 <tr>
@@ -23,14 +24,16 @@
                     <td>{{route.departure}}</td>
                     <td>{{route.arrival}}</td>
                     <td>{{route.distance}}</td>
+                    <td>{{route.vehicle}}</td>
                 </tr>
             {%endfor%}
         </table>
     </div>
 
     <div>
+
         <form id  = "search" method = "post" action = "/search" >
-            <input type = "text" name = "search_term">
+            <input placeholder = "Search" type = "text" name = "search_term">
         </form>
     </div>
 

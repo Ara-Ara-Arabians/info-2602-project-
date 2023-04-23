@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify
 from App.models import db
-from App.controllers import (create_user, get_all_routes)
+from App.controllers import (create_user, get_all_routes, search_routes)
 
 index_views = Blueprint('index_views', __name__, template_folder='../templates')
 
@@ -24,4 +24,7 @@ def health_check():
 @index_views.route('/search', methods = ['POST'])
 def search():
     word = request.form
-    print("this is the search function call" + word)
+    found = search_routes(word["search_term"])
+    return render_template('index.html', routes = found)
+    # print("this is the search function call " + word["search_term"])
+    # return word["search_term"]
