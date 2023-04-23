@@ -28,8 +28,9 @@ User Commands
 @app.cli.command("newroute")
 @click.argument("origin", default = "Port-of-Spain")
 @click.argument("destination", default = "San Fernando")
-def create_route_function(origin, destination):
-    create_route(origin, destination)
+@click.argument("vehicle", default = "Taxi")
+def create_route_function(origin, destination, vehicle):
+    create_route(origin, destination, vehicle)
     print("route created!!!!")
 
 @app.cli.command("listRoutes")

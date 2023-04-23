@@ -75,4 +75,19 @@
         </table>
     </div>
 
+    <div>
+
+        <form id  = "search" method = "post" action = "/search" >
+            <input placeholder = "Search" type = "text" name = "search_term">
+        </form>
+
+        <form id  = filter_taxi action = "/filter"  method = "get">
+            Filter By:  <input type = "Submit" name = "filter_button" value = "Taxi">
+                        <input type = "Submit" name = "filter_button" value = "Bus">
+                        <input type = "Submit" name = "filter_button" value = "Maxi">
+                        <input type = "Submit" name = "filter_button" value = "None">
+                        
+        </form>
+    </div>
+
 {% endblock %}
