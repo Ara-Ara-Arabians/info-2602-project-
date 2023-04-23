@@ -2,7 +2,7 @@ import click, pytest, sys
 from flask import Flask
 from flask.cli import with_appcontext, AppGroup
 
-from App import App, db, Route
+#from App import App, db, Route
 from App.database import db, get_migrate
 from App.main import create_app
 from App.controllers import ( create_user, get_all_users_json, get_all_users )
@@ -25,19 +25,19 @@ User Commands
 '''
 
 
-#first try at populating routes
-@click.command()
-@click.argument('id')
-@click.argument('name')
-@click.argument('fare')
-def create_route(id, name, fare):
-    route = Route(id=id, name=name, fare=fare)
-    db.session.add(route)
-    db.session.commit()
-    print("Route '{id}' created.")
+# #first try at populating routes
+# @click.command()
+# @click.argument('id')
+# @click.argument('name')
+# @click.argument('fare')
+# def create_route(id, name, fare):
+#     route = Route(id=id, name=name, fare=fare)
+#     db.session.add(route)
+#     db.session.commit()
+#     print("Route '{id}' created.")
 
-if __name__ == '__main__':
-    create_route()
+# if __name__ == '__main__':
+#     create_route()
 # Commands can be organized using groups
 
 # create a group, it would be the first argument of the comand
