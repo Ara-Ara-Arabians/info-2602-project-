@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify
 from App.models import db
-from App.controllers import (create_user, get_all_routes, search_routes, route_filter)
+from App.controllers import (create_user, get_all_routes, search_routes, route_filter, create_route, search_id)
 
 index_views = Blueprint('index_views', __name__, template_folder='../templates')
 
@@ -15,6 +15,32 @@ def init():
     db.create_all()
     create_user('bob', 'bobpass')
     return jsonify(message='db initialized!')
+
+@index_views.route('/route', methods=['GET'])
+def route():
+    return render_template('route.html')
+
+@index_views.route('/route', methods=['POST'])
+def add_route():
+    origin = request.form['origin']
+    destination = request.form['destination']
+    vehicle = request.form['vehicle']
+    departure = request.form['departure']
+    arrival = request.form['arrival']
+    distance = request.form['distance']
+
+    departure = str(departure)
+    arrival = str(arrival)
+
+    create_route(origin, destination, vehicle, departure, arrival, distance)
+
+    return redirect('/')
+
+@index_views.route('/routeinfo/<int:id>', methods = ['GET'])
+def get_more_info(id):
+    route = search_id(id)
+    return render_template('routeinfo.html',  route = route)
+
 
 @index_views.route('/health', methods=['GET'])
 def health_check():
