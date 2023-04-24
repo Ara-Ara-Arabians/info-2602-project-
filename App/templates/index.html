@@ -6,15 +6,16 @@
 
 {% block nav %}
 <nav class="navbar navbar-dark bg-dark bg-body-tertiary" data-bs-theme="dark">
-    <div class="container-fluid">
-      <img src="/static/Logo-removebg-preview.png"  height="60" class="d-inline-block ">
-      <a class="navbar-brand" href="#!" style="font-size:xx-large">
-        Expeditious 
-      </a>
-      <button style="padding-bottom: 10px;" class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasNavbarLabel">
+  <div class="container-fluid">
+  <div>
+    <button style="padding-bottom: 10px;" class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand center" href="#!" style="font-size:xx-large">
+      Expeditious 
+    </a>
+  </div>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -51,7 +52,7 @@
 
 {% block content %}
 <div class="row g-3">
-<div class="card justify-content-left col-md-3 text-white" style="background-color:#212529; border: 1px solid whitesmoke">
+<div class="card justify-content-left col-md-3 text-white" style="background-color:#212529e0; border-right: 1px solid whitesmoke">
 
   {% if myRoutes == NULL: %}
     <div class="card-header">
@@ -80,9 +81,9 @@
   
 
 </div>
-<div class="col">
+<div class="col" style="background-color:#212529e0; border-radius:5px;">
   <div class="row g-3">
-    <h3 class="col" style="color:whitesmoke; font-weight:300">All Routes</h3>
+    <h3 class="col" style="padding-top:5px; color:whitesmoke; font-weight:300">All Routes</h3>
 
     <div class="col-md-5" style="margin-bottom:10px;">
 
@@ -93,27 +94,17 @@
   </div>
   <div class="row g-3">
         <form id=filter_taxi action = "/filter"  method = "get" class="col text-white">
-            Filter by mode:  <input class="btn btn-sm btn-outline-secondary" type = "Submit" name = "filter_button" value = "Taxi">
-                        <input class="btn btn-sm btn-outline-secondary" type = "Submit" name = "filter_button" value = "Bus">
-                        <input class="btn btn-sm btn-outline-secondary" type = "Submit" name = "filter_button" value = "Maxi">
-                        <input class="btn btn-sm btn-outline-secondary" type = "Submit" name = "filter_button" value = "None">
+            Filter by mode:  <input class="btn btn-sm btn-outline-light" type = "Submit" name = "filter_button" value = "Taxi">
+                        <input class="btn btn-sm btn-outline-light" type = "Submit" name = "filter_button" value = "Bus">
+                        <input class="btn btn-sm btn-outline-light" type = "Submit" name = "filter_button" value = "Maxi">
+                        <input class="btn btn-sm btn-outline-light" type = "Submit" name = "filter_button" value = "None">
                         
         </form>
-        <!-- <div class="col-md-5">
-          <button class="btn black-text btn-sm btn-secondary" style="font-weight:500; ">
-            <a class="nav-link" href="/route/{{route.id}}">Save Route</a>
-          </button>
-          <button class="btn black-text btn-sm btn-secondary" style="font-weight:500;">
-            <a class="nav-link" href="/route">Add Route</a>
-          </button>
-          <button class="btn btn-sm btn-outline-danger" style="font-weight:500">
-          <a class="nav-link" href="/delete">Remove Route</a> 
-          </button>
-        </div> -->
+
   </div>
 
     <div class="" style="color:white">
-      <table class="table table-dark table-striped table-bordered border-light" >
+      <table class="table table-hover table-dark table-striped table-bordered border-light" >
         <thead>
           <tr>
               <th>Origin</th>
@@ -129,18 +120,46 @@
 
           
             
+            
+            <tr>
+              <td>a</td>
+              <td>b</td>
+              <td>c</td>
+              <td>d</td>
+              <td>e</td>
+              <td>f</td>
+              <td><a class= "btn btn-sm btn-secondary" href = "/route">...</a></td>
+            </tr>
+            <tr>
+              <td>a</td>
+              <td>b</td>
+              <td>c</td>
+              <td>d</td>
+              <td>e</td>
+              <td>f</td>
+              <td><a class= "btn btn-sm btn-secondary" href = "/route">...</a></td>
+            </tr>
+            <tr>
+              <td>a</td>
+              <td>b</td>
+              <td>c</td>
+              <td>d</td>
+              <td>e</td>
+              <td>f</td>
+              <td><a class= "btn btn-sm btn-secondary" href = "/route">...</a></td>
+            </tr>
+          
+            
           {%for route in routes%}  
           
               <tr>
-                <a class= "" href = "/routeinfo/{{route.id}}">
                   <td>{{route.origin}}</td>
                   <td>{{route.destination}}</td>
                   <td>{{route.departure}}</td>
                   <td>{{route.arrival}}</td>
                   <td>{{route.distance}}</td>
                   <td>{{route.vehicle}}</td>
-                  <!-- <td><a class= "btn btn-info" href = "/routeinfo/{{route.id}}">More info</a></td> -->
-                </a>
+                  <td><a class= "btn btn-sm btn-secondary" href = "/routeinfo/{{route.id}}">More</a></td>
               </tr>
             
           {%endfor%}
