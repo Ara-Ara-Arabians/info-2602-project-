@@ -20,6 +20,21 @@ def init():
 def route():
     return render_template('route.html')
 
+@index_views.route('/route', methods=['POST'])
+def add_route():
+    origin = request.form['origin']
+    destination = request.form['destination']
+    vehicle = request.form['vehicle']
+    departure = request.form['departure']
+    arrival = request.form['arrival']
+    distance = request.form['distance']
+
+    new_route = Route(origin=origin, destination=destination, vehicle=vehicle, departure=departure, arrival=arrival, distance=distance)
+    db.session.add(new_route)
+    db.session.commit()
+
+    return 'Route added successfully!'
+
 @index_views.route('/health', methods=['GET'])
 def health_check():
     return jsonify({'status':'healthy'})
