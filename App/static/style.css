@@ -1,5 +1,5 @@
 .bg{
     background-color: rgb(39, 39, 39);
-    background-image: url("/App/static/city-bg.png");
+    background-image: url("/static/city-bg.png");
     background-size: cover;
 }
