@@ -7,6 +7,7 @@
         <li><a href="/login">Login</a></li>
     </ul>
 {% endblock %}
+
 {% block nav %}
 <nav class="nav bg-dark bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
@@ -17,13 +18,14 @@
   </div>
 </nav>
 {% endblock %}
+
 {% block content %}
-<div class="row">
-  <div style="background-image: url(/images/city-bg.png); background-size: cover;">
-    <img src="/images/Logo-removebg-preview.png" width="120" height="60" class="d-inline-block ">
+<div class="row g-3 bg">
+  <div class="col-md-6" style="background-image: url(/App/static/city-bg.png); background-size: cover;">
+    <img src="/App/static/Logo-removebg-preview.png" width="120" height="60" class="d-inline-block ">
   </div>
-	<main class="card text bg-dark" style="width:auto; margin-top:7%">
-    <div class="card-header" style="background-color: rgb(83, 83, 83);">
+	<main class="card col-md-6 text bg-dark" style="width:fit-content; margin-top:7%;">
+    <div class="card-header" style="background-color:grey;">
       <div class="card-title text-white" style="font-weight:400;">Sign Up</div>
     </div>
    <form class="card-body" id="loginForm" method="POST" action="/signup" style="padding:1em">    
@@ -46,7 +48,8 @@
         </div>
       </div>
       <div class="card-footer">
-        <input type="submit" class="grey text btn">
+        <input type="submit" class="grey text btn" style="font-weight:500;">
+        <a href="/login">Already have an account? Login here</a>
       </div>
     </form>
   </main>
