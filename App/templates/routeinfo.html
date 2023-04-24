@@ -46,25 +46,14 @@
 
 {% block content %}
   <div class="row g-3">
-    <h1 class="col" style="color:white">Schedule</h1>
+    <h1 class="col" style="color:white">Route Info</h1>
 
     <div class="col" style="margin-bottom:10px;">
 
-        <form id  = "search" method = "post" action = "/search" >
-            <input placeholder = "Search" type = "text" name = "search_term">
-        </form>
+        
       </div>
   </div>
   <div class="row g-3">
-        <form id=filter_taxi action = "/filter"  method = "get" class="col text-white">
-            Filter by mode:  <input class="btn-check" type = "Submit" name = "filter_button" value = "Taxi">
-                        <input class="btn-check" type = "Submit" name = "filter_button" value = "Bus">
-                        <input class="btn-check" type = "Submit" name = "filter_button" value = "Maxi">
-                        <input class="btn-check" type = "Submit" name = "filter_button" value = "None">
-                        
-        </form>
-        <div class="col-md-3">
-        <a class="btn btn-info" href="/route">Add Route</a>
         <a class="btn btn-danger">Remove Route</a> <!--flash a message that it has been removed? -->
         </div>
   </div>
@@ -79,27 +68,18 @@
               <th>Arrival Time</th>
               <th>Distance</th>
               <th>Mode</th>
-              <th> </th>
           </tr>
         </thead>
-        <tbody class="table-group-divider">
-
-          
-            
-          {%for route in routes%}  
-          
-              <tr>
+        <tbody class="table-group-divider">          
+              <tr >
                   <td>{{route.origin}}</td>
                   <td>{{route.destination}}</td>
                   <td>{{route.departure}}</td>
                   <td>{{route.arrival}}</td>
                   <td>{{route.distance}}</td>
                   <td>{{route.vehicle}}</td>
-                  <td><a class= "btn btn-info" href = "/routeinfo/{{route.id}}">More info</a></td>
               </tr>
-            
-          {%endfor%}
-        
+          
         </tbody>
       </table>
   </div>

@@ -22,3 +22,6 @@ def search_routes(search_word):
 
 def route_filter(filter_word):
     return Route.query.filter_by(vehicle = filter_word).all()
+
+def search_id(id):
+    return Route.query.filter_by(id= id).first()
