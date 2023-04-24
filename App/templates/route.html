@@ -4,25 +4,25 @@
   <title>Add Route</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
-  <div class="container mt-5">
-    <h1 class="text-center mb-5">Add Route</h1>
+<body class="bg" style="background-image: url(/static/city-bg.png); background-size: cover;">
+  <div style="background-color:#212529e0;" class="container mt-5">
+    <h1 class="text-white text-center mb-5">Add Route</h1>
     <div class="row justify-content-center">
       <div class="col-md-6">
         <form action="{{ url_for('index_views.route') }}" method="POST">
           <div class="form-group">
-            <label for="origin">Origin:</label>
-            <input type="text" class="form-control" id="origin" name="origin" required>
+            <label class="text-white" for="origin">Origin:</label>
+            <input type="text" class="text-white bg-dark form-control" id="origin" name="origin" required>
           </div>
 
           <div class="form-group">
-            <label for="destination">Destination:</label>
-            <input type="text" class="form-control" id="destination" name="destination" required>
+            <label class="text-white" for="destination">Destination:</label>
+            <input type="text" class="text-white bg-dark form-control" id="destination" name="destination" required>
           </div>
 
           <div class="form-group">
-            <label for="vehicle">Vehicle:</label>
-            <select class="form-control" id="vehicle" name="vehicle">
+            <label class="text-white" for="vehicle">Vehicle:</label>
+            <select class="text-white bg-dark form-control" id="vehicle" name="vehicle">
               <option value="Taxi">Taxi</option>
               <option value="Maxi">Maxi</option>
               <option value="Bus">Bus</option>
@@ -31,24 +31,24 @@
 
 
           <div class="form-group">
-            <label for="departure">Departure:</label>
-            <input type="datetime-local" class="form-control" id="departure" name="departure" required>
+            <label class="text-white" for="departure">Departure:</label>
+            <input type="datetime-local" class="text-white bg-dark form-control" id="departure" name="departure" required>
           </div>
 
           <div class="form-group">
-            <label for="arrival">Arrival:</label>
-            <input type="datetime-local" class="form-control" id="arrival" name="arrival" required>
+            <label class="text-white" for="arrival">Arrival:</label>
+            <input type="datetime-local" class="text-white bg-dark form-control" id="arrival" name="arrival" required>
           </div>
 
           <div class="form-group">
-            <label for="distance">Distance:</label>
-            <input type="number" class="form-control" id="distance" name="distance" step="0.01" required>
+            <label class="text-white" for="distance">Distance:</label>
+            <input type="number" class="text-white bg-dark form-control" id="distance" name="distance" step="0.01" required>
           </div>
-
-          <button type="submit" class="btn btn-primary">Add Route</button>
+          <div class="form-group">
+            <button type="submit" class="align-text-center btn btn-secondary">Add Route</button>
+            <a class="" style="color:lightgrey; text-decoration: underline;"href="{{ url_for('auth_views.go_home') }}">Return to Home</a>
+          </div>
         </form>
-        <br>
-        <a href="{{ url_for('auth_views.go_home') }}">Go back home</a>
       </div>
     </div>
   </div>
