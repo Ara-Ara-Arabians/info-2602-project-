@@ -45,10 +45,41 @@
 {% endblock %}
 
 {% block content %}
-  <div class="row g-3">
-    <h1 class="col" style="color:white">Schedule</h1>
+<div class="row g-3">
+<div class="card justify-content-left col-md-3 text-white" style="background-color:#212529; border: 1px solid whitesmoke">
 
-    <div class="col" style="margin-bottom:10px;">
+  {% if myRoutes == NULL: %}
+    <div class="card-header">
+      <h3 class="card-title">My Routes</h3>
+    </div>
+    <p class="card-body table-group-divider">You don't have any saved routes.</p>
+  {% endif %}
+
+  {% if myRoutes %}
+  <div class="card-header">
+    <h3 class="card-title">My Routes</h3>
+    <a class="right" data-bs-toggle="collapse" href="#myRoutes" style="color:gray">Expand/Collapse</a>
+  </div>
+  <div id="myRoutes" class="collapse card-body table-group-divider">
+    {% for route in myRoutes %}
+      <div class="card" style="background-color:dimgray; border: 1px solid whitesmoke">
+        <div class="card-body"> 
+          <p class="black-text" style="font-weight:500; padding:0; margin:0">{{route.origin}}-{{route.destination}}</p>
+          <p class="black-text right" style="font-weight:500; padding:0; margin:0">{{route.departure}}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  
+
+</div>
+<div class="col">
+  <div class="row g-3">
+    <h3 class="col" style="color:whitesmoke; font-weight:300">All Routes</h3>
+
+    <div class="col-md-5" style="margin-bottom:10px;">
 
         <form id  = "search" method = "post" action = "/search" >
             <input placeholder = "Search" type = "text" name = "search_term">
@@ -57,15 +88,22 @@
   </div>
   <div class="row g-3">
         <form id=filter_taxi action = "/filter"  method = "get" class="col text-white">
-            Filter by mode:  <input class="btn-check" type = "Submit" name = "filter_button" value = "Taxi">
-                        <input class="btn-check" type = "Submit" name = "filter_button" value = "Bus">
-                        <input class="btn-check" type = "Submit" name = "filter_button" value = "Maxi">
-                        <input class="btn-check" type = "Submit" name = "filter_button" value = "None">
+            Filter by mode:  <input class="btn btn-sm btn-outline-secondary" type = "Submit" name = "filter_button" value = "Taxi">
+                        <input class="btn btn-sm btn-outline-secondary" type = "Submit" name = "filter_button" value = "Bus">
+                        <input class="btn btn-sm btn-outline-secondary" type = "Submit" name = "filter_button" value = "Maxi">
+                        <input class="btn btn-sm btn-outline-secondary" type = "Submit" name = "filter_button" value = "None">
                         
         </form>
-        <div class="col-md-3">
-        <a class="btn btn-info" href="/add">Add Route</a>
-        <a class="btn btn-danger">Remove Route</a> <!--flash a message that it has been removed? -->
+        <div class="col-md-5">
+          <button class="btn black-text btn-sm btn-secondary" style="font-weight:500; ">
+            <a class="nav-link">Save Route</a>
+          </button>
+          <button class="btn black-text btn-sm btn-secondary" style="font-weight:500;">
+            <a class="nav-link" href="/add">Add Route</a>
+          </button>
+          <button class="btn btn-sm btn-outline-danger" style="font-weight:500">
+          <a class="nav-link">Remove Route</a> <!--flash a message that it has been removed? -->
+          </button>
         </div>
   </div>
 
@@ -82,30 +120,6 @@
           </tr>
         </thead>
         <tbody class="table-group-divider">
-          <tr>
-            <td>a</td>
-            <td>b</td>
-            <td>c</td>
-            <td>d</td>
-            <td>e</td>
-            <td>f</td>
-          </tr>
-          <tr>
-            <td>a</td>
-            <td>b</td>
-            <td>c</td>
-            <td>d</td>
-            <td>e</td>
-            <td>f</td>
-          </tr>
-          <tr>
-            <td>a</td>
-            <td>b</td>
-            <td>c</td>
-            <td>d</td>
-            <td>e</td>
-            <td>f</td>
-          </tr>
           {%for route in routes%}          
               <tr>
                   <td>{{route.origin}}</td>
@@ -120,5 +134,6 @@
         </tbody>
       </table>
   </div>
-
+</div>
+</div>
 {% endblock %}
