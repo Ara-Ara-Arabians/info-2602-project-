@@ -23,7 +23,7 @@
           
           <ul id="my-tabs" class="navbar-nav flex-grow-1 pe-3">
             <li>
-              <img src="/static/small-logo.png"  height="150">
+              <img src="/static/Logo-removebg-preview.png" height="150">
             </li>
             <li class="nav-item">
               <a id="home-link" class="nav-link" href="/">Home</a>
@@ -55,7 +55,7 @@
     <p class="card-body table-group-divider">You don't have any saved routes.</p>
   {% endif %}
 
-  {% if myRoutes %}
+  {% if myRoutes: %}
   <div class="card-header">
     <h3 class="card-title">My Routes</h3>
     <a class="right" data-bs-toggle="collapse" href="#myRoutes" style="color:gray">Expand/Collapse</a>
@@ -94,7 +94,7 @@
                         <input class="btn btn-sm btn-outline-secondary" type = "Submit" name = "filter_button" value = "None">
                         
         </form>
-        <div class="col-md-5">
+        <!-- <div class="col-md-5">
           <button class="btn black-text btn-sm btn-secondary" style="font-weight:500; ">
             <a class="nav-link" href="/route/{{route.id}}">Save Route</a>
           </button>
@@ -104,7 +104,7 @@
           <button class="btn btn-sm btn-outline-danger" style="font-weight:500">
           <a class="nav-link" href="/delete">Remove Route</a> 
           </button>
-        </div>
+        </div> -->
   </div>
 
     <div class="" style="color:white">
@@ -127,13 +127,15 @@
           {%for route in routes%}  
           
               <tr>
+                <a class= "" href = "/routeinfo/{{route.id}}">
                   <td>{{route.origin}}</td>
                   <td>{{route.destination}}</td>
                   <td>{{route.departure}}</td>
                   <td>{{route.arrival}}</td>
                   <td>{{route.distance}}</td>
                   <td>{{route.vehicle}}</td>
-                  <td><a class= "btn btn-info" href = "/routeinfo/{{route.id}}">More info</a></td>
+                  <!-- <td><a class= "btn btn-info" href = "/routeinfo/{{route.id}}">More info</a></td> -->
+                </a>
               </tr>
             
           {%endfor%}
