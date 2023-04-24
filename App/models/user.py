@@ -42,8 +42,8 @@ class Route(db.Model):
     origin = db.Column(db.String(120), nullable = False)   
     destination = db.Column(db.String(120), nullable = False)
     vehicle = db.Column(db.String(30), nullable = False, default = "Taxi")
-    departure = db.Column(db.DateTime(), default = datetime.datetime.utcnow)
-    arrival = db.Column(db.DateTime(), default = datetime.datetime.utcnow)
+    departure = db.Column(db.String(120))
+    arrival = db.Column(db.String(120))
     distance = db.Column(db.Double)
     # name = db.Column(db.String(120), unique=True, nullable=False)
     # map_url = db.Column(db.String(200), nullable=False)#if we dont api then this redundant
@@ -51,7 +51,7 @@ class Route(db.Model):
     # fare = db.Column(db.Float, nullable=False)
 
     def __repr__(self):
-        return self.origin + " " + self.destination + " " + str(self.departure)
+        return self.origin + " " + self.destination + " " + str(self.departure) + "  "+ str(self.id)
 
 class Driver(db.Model):
     id = db.Column(db.Integer, primary_key=True)

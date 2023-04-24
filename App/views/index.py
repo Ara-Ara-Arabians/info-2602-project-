@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify
 from App.models import db
-from App.controllers import (create_user, get_all_routes, search_routes, route_filter)
+from App.controllers import (create_user, get_all_routes, search_routes, route_filter, create_route)
 
 index_views = Blueprint('index_views', __name__, template_folder='../templates')
 
@@ -29,9 +29,10 @@ def add_route():
     arrival = request.form['arrival']
     distance = request.form['distance']
 
-    new_route = Route(origin=origin, destination=destination, vehicle=vehicle, departure=departure, arrival=arrival, distance=distance)
-    db.session.add(new_route)
-    db.session.commit()
+    departure = str(departure)
+    arrival = str(arrival)
+
+    create_route(origin, destination, vehicle, departure, arrival, distance)
 
     return 'Route added successfully!'
 
