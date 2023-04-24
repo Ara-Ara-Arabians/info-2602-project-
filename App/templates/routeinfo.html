@@ -5,15 +5,16 @@
 {{ super() }}
 
 {% block nav %}
-<nav class="navbar navbar-dark bg-dark bg-body-tertiary" data-bs-theme="dark">
-    <div class="container-fluid">
-      <img src="/static/Logo-removebg-preview.png"  height="60" class="d-inline-block ">
-      <a class="navbar-brand" href="#!" style="font-size:xx-large">
-        Expeditious 
-      </a>
-      <button style="padding-bottom: 10px;" class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<nav class="navbar navbar-dark bg-dark bg-body-tertiary" style="padding-bottom:10px; height:80px" data-bs-theme="dark">
+  <div class="container-fluid">    
+    
+    <img src="/static/Logo-removebg-preview.png" style="padding-top:0; margin-top:0"height="100px">
+    <a class="navbar-brand center" href="#!" style="font-size:xx-large;">
+      Expeditious 
+    </a>
+    <button  class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> 
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
@@ -22,9 +23,6 @@
         <div class="offcanvas-body center">
           
           <ul id="my-tabs" class="navbar-nav flex-grow-1 pe-3">
-            <li>
-              <img src="/static/small-logo.png"  height="150">
-            </li>
             <li class="nav-item">
               <a id="home-link" class="nav-link" href="/">Home</a>
             </li>
@@ -32,12 +30,16 @@
             <li class="nav-item">
               <a id="login-link" class="nav-link" href="/login">Log In</a>
             </li>
+            
             <li class="nav-item">
               <a id="signup-link" class="nav-link" href="/signup">Signup</a>
             </li>
             -->
             <li class="nav-item">
               <a id="logout-link" class="nav-link" href="/logout">Logout</a>
+            </li>
+            <li>
+              <img src="/static/Logo-removebg-preview.png" width="80%">
             </li>
           </ul>
         </div>
@@ -47,32 +49,26 @@
 {% endblock %}
 
 {% block content %}
-  <div class="row g-3">
-    <h1 class="col" style="color:white">Route Info</h1>
+  <div class="row g-3" style="background-color:#212529e0; border-radius:5px; margin-top:7%;">
+    <div class="col" ><!-- </div> -->
+    <h3 class="col-md-6" style="padding-top:5px; color:whitesmoke; font-weight:300">Route Information</h3>
 
-    <div class="col" style="margin-bottom:10px;">
+    <!-- <div class="col" style="margin-bottom:10px;"> -->
 
-        
-      </div>
-  </div>
-  <div class="row g-3">
-    <div class="col-md-3">
-      <!-- <div class="col-md-5">
-          <button class="btn black-text btn-sm btn-secondary" style="font-weight:500; ">
+    </div>
+      <div class="col-md-3">
+          <button class="btn black-text btn-sm btn-light" style="font-weight:500; ">
             <a class="nav-link" href="/route/{{route.id}}">Save Route</a>
           </button>
-          <button class="btn black-text btn-sm btn-secondary" style="font-weight:500;">
-            <a class="nav-link" href="/route">Add Route</a>
-          </button>
-          <button class="btn btn-sm btn-outline-danger" style="font-weight:500">
+          <button class="btn btn-sm btn-danger" style="font-weight:500">
           <a class="nav-link" href="/delete">Remove Route</a> 
           </button>
-        </div> -->
-            <a class="btn btn-info" href="/route/{{route.id}}">Bookmark</a>
-            <a class="btn btn-danger" href = "/delete">Remove Route</a> <!--flash a message that it has been removed? -->
-        </div>
-        </div>
-  </div>
+      </div>
+            <!-- <a class="btn btn-info" href="/route/{{route.id}}">Bookmark</a>
+            <a class="btn btn-danger" href = "/delete">Remove Route</a> flash a message that it has been removed? -->
+        
+        
+  
 
     <div class="" style="color:white">
       <table class="table table-dark table-striped table-bordered border-light" >
@@ -99,5 +95,6 @@
         </tbody>
       </table>
   </div>
-
+  <a style="color:lightgrey; text-decoration: underline; padding-top:0; padding-bottom: 5px; margin-top: 0;" href="{{ url_for('auth_views.go_home') }}">Return to Home</a>
+</div>
 {% endblock %}

@@ -5,17 +5,17 @@
 {{ super() }}
 
 {% block nav %}
-<nav class="navbar navbar-dark bg-dark bg-body-tertiary" data-bs-theme="dark">
-  <div class="container-fluid">
-  <div>
-    <button style="padding-bottom: 10px;" class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand center" href="#!" style="font-size:xx-large">
+<nav class="navbar navbar-dark bg-dark bg-body-tertiary" style="padding-bottom:10px; height:80px" data-bs-theme="dark">
+  <div class="container-fluid">    
+    
+    <img src="/static/Logo-removebg-preview.png" style="padding-top:0; margin-top:0"height="100px">
+    <a class="navbar-brand center" href="#!" style="font-size:xx-large;">
       Expeditious 
     </a>
-  </div>
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <button  class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> 
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -23,9 +23,6 @@
         <div class="offcanvas-body center">
           
           <ul id="my-tabs" class="navbar-nav flex-grow-1 pe-3">
-            <li>
-              <img src="/static/Logo-removebg-preview.png" height="150">
-            </li>
             <li class="nav-item">
               <a id="home-link" class="nav-link" href="/">Home</a>
             </li>
@@ -41,6 +38,9 @@
             <li class="nav-item">
               <a id="logout-link" class="nav-link" href="/logout">Logout</a>
             </li>
+            <li>
+              <img src="/static/Logo-removebg-preview.png" width="80%">
+            </li>
           </ul>
         </div>
       </div>
@@ -52,7 +52,7 @@
 
 {% block content %}
 <div class="row g-3">
-<div class="card justify-content-left col-md-3 text-white" style="background-color:#212529e0; border-right: 1px solid whitesmoke">
+<div class="card justify-content-left col-md-3 text-white" style="background-color:#212529e0; border: 1px solid grey">
 
   {% if myRoutes == NULL: %}
     <div class="card-header">
@@ -81,14 +81,14 @@
   
 
 </div>
-<div class="col" style="background-color:#212529e0; border-radius:5px;">
+<div class="col" style="background-color:#212529e0; border-radius:5px; border: 1px solid grey">
   <div class="row g-3">
     <h3 class="col" style="padding-top:5px; color:whitesmoke; font-weight:300">All Routes</h3>
 
     <div class="col-md-5" style="margin-bottom:10px;">
 
         <form id  = "search" method = "post" action = "/search" >
-            <input placeholder = "Search" type = "text" name = "search_term" style="color:whitesmoke">
+            <input placeholder = "Search by Origin" type = "text" name = "search_term" style="color:whitesmoke">
         </form>
       </div>
   </div>
@@ -97,11 +97,16 @@
             Filter by mode:  <input class="btn btn-sm btn-outline-light" type = "Submit" name = "filter_button" value = "Taxi">
                         <input class="btn btn-sm btn-outline-light" type = "Submit" name = "filter_button" value = "Bus">
                         <input class="btn btn-sm btn-outline-light" type = "Submit" name = "filter_button" value = "Maxi">
-                        <input class="btn btn-sm btn-outline-light" type = "Submit" name = "filter_button" value = "None">
+                        <input class="btn btn-sm btn-outline-light" type = "Submit" name = "filter_button" value = "All">
                         
         </form>
-
+        <div class="col-md-5">
+          <button class="btn black-text btn-sm btn-light" style="font-weight:500;">
+            <a class="nav-link" href="/route">Add New Route</a>
+          </button>
+      </div>
   </div>
+
 
     <div class="" style="color:white">
       <table class="table table-hover table-dark table-striped table-bordered border-light" >
@@ -116,39 +121,7 @@
               <th> </th>
           </tr>
         </thead>
-        <tbody class="table-group-divider">
-
-          
-            
-            
-            <tr>
-              <td>a</td>
-              <td>b</td>
-              <td>c</td>
-              <td>d</td>
-              <td>e</td>
-              <td>f</td>
-              <td><a class= "btn btn-sm btn-secondary" href = "/route">...</a></td>
-            </tr>
-            <tr>
-              <td>a</td>
-              <td>b</td>
-              <td>c</td>
-              <td>d</td>
-              <td>e</td>
-              <td>f</td>
-              <td><a class= "btn btn-sm btn-secondary" href = "/route">...</a></td>
-            </tr>
-            <tr>
-              <td>a</td>
-              <td>b</td>
-              <td>c</td>
-              <td>d</td>
-              <td>e</td>
-              <td>f</td>
-              <td><a class= "btn btn-sm btn-secondary" href = "/route">...</a></td>
-            </tr>
-          
+        <tbody class="table-group-divider">          
             
           {%for route in routes%}  
           

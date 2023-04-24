@@ -69,7 +69,7 @@ def search():
 def filter_routes():
     rsult = request.args.get('filter_button')
 
-    if(rsult == "None"):
+    if(rsult == "All"):
         return redirect('/')
 
     print(str(rsult))
