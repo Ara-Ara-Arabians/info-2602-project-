@@ -16,6 +16,10 @@ def init():
     create_user('bob', 'bobpass')
     return jsonify(message='db initialized!')
 
+@index_views.route('/route', methods=['GET'])
+def route():
+    return render_template('route.html')
+
 @index_views.route('/health', methods=['GET'])
 def health_check():
     return jsonify({'status':'healthy'})
