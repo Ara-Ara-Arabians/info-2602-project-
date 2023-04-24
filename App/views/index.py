@@ -34,7 +34,7 @@ def add_route():
 
     create_route(origin, destination, vehicle, departure, arrival, distance)
 
-    return render_template('index.html')
+    return redirect('/')
 
 @index_views.route('/health', methods=['GET'])
 def health_check():

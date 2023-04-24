@@ -28,6 +28,10 @@ def get_user_page():
 def identify_page():
     return jsonify({'message': f"username: {current_user.username}, id : {current_user.id}"})
 
+@auth_views.route('/gohome', methods=['GET'])
+#@login_required
+def go_home():
+  return redirect('/')
 
 @auth_views.route('/login', methods=['POST'])
 def login_action():
