@@ -5,12 +5,21 @@ from App.database import db
 import datetime
 
 
-# class UserRoutes(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-#     route_id = db.Column(db.Integer, db.ForeignKey('route.id'), nullable=False)
-#     user = db.relationship('User', backref=db.backref('trips', lazy=True))
-#    # route = db.relationship('Route', backref=db.backref('trips', lazy=True))
+class UserRoutes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    route_id = db.Column(db.Integer, db.ForeignKey('route.id'), nullable=False)
+    user = db.relationship('User', backref=db.backref('trips', lazy=True))
+    route = db.relationship('Route', backref=db.backref('trips', lazy=True))
+
+    def __init__(self, user_id, route_id):
+        self.user_id = user_id
+        self.route_id = route_id
+
+    def __repr__(self):
+        return f'<{self.id}: {self.user_id}: {self.route_id}: {self.user}: {self: route}>'
+    
+
    
 
 class User(db.Model, UserMixin):
@@ -42,6 +51,21 @@ class User(db.Model, UserMixin):
         """Check hashed password."""
         return check_password_hash(self.password, password)
 
+    def save_route(self, route_id):
+        rout = Route.query.get(route_id)
+        if rout:
+            try:
+                saveroute = UserRoute(self.id, route_id)
+                db.session.add(saveroute)
+                db.session.commit()
+                return saveroute
+            except Exception:
+                db.session.rollback()
+                return None
+        return None
+
+    def get_saved(self):
+        return "self.trips.route"
     
     def __repr__(self):
         return f'<User {self.username} - {self.email}>'
