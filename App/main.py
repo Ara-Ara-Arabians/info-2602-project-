@@ -6,6 +6,8 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 from datetime import timedelta
+#this is the change i madee
+from App.database import db
 
 from App.database import init_db
 from App.config import config
@@ -54,5 +56,10 @@ def create_app(config_overrides={}):
     init_db(app)
     setup_jwt(app)
     setup_flask_login(app)
+
+#this is the change i made
+    with app.app_context():
+        db.create_all()
+
     app.app_context().push()
     return app
