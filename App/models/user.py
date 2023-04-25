@@ -5,12 +5,12 @@ from App.database import db
 import datetime
 
 
-class UserRoutes(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    route_id = db.Column(db.Integer, db.ForeignKey('route.id'), nullable=False)
-    user = db.relationship('User', backref=db.backref('trips', lazy=True))
-    route = db.relationship('Route', backref=db.backref('trips', lazy=True))
+# class UserRoutes(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+#     route_id = db.Column(db.Integer, db.ForeignKey('route.id'), nullable=False)
+#     user = db.relationship('User', backref=db.backref('trips', lazy=True))
+#     route = db.relationship('Route', backref=db.backref('trips', lazy=True))
 
     def __init__(self, user_id, route_id):
         self.user_id = user_id
