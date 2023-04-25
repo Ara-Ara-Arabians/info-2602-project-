@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify
 from App.models import db
 from App.controllers import (create_user, get_all_routes, search_routes, route_filter, create_route, search_id)
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 
 index_views = Blueprint('index_views', __name__, template_folder='../templates')
@@ -13,6 +13,11 @@ index_views = Blueprint('index_views', __name__, template_folder='../templates')
 def index_page():
 
     routelist = get_all_routes()
+    print(current_user)
+    trial = current_user.trips
+    print(current_user.trips)
+
+
     return render_template('index.html', routes = routelist)
 
 @index_views.route('/init', methods=['GET'])
@@ -75,3 +80,9 @@ def filter_routes():
     print(str(rsult))
     filtered = route_filter(rsult)
     return render_template('index.html', routes = filtered)
+
+@index_views.route('/bookmark/<int:id>', methods = ['GET'])
+@login_required
+def save_user_route(id):
+    current_user.save_route(id)
+    return redirect('/')
