@@ -4,11 +4,21 @@ from App.database import db
 
 import datetime
 
+
+class UserRoutes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    route_id = db.Column(db.Integer, db.ForeignKey('route.id'), nullable=False)
+    user = db.relationship('User', backref=db.backref('trips', lazy=True))
+    route = db.relationship('Route', backref=db.backref('trips', lazy=True))
+   
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username =  db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
+    # userss = db.relationship('UserRoutes', backref = db.backref('users', lazy = 'joined'))
 
     def __init__(self, username, email, password):
       self.username = username
