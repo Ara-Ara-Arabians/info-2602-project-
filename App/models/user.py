@@ -12,12 +12,12 @@ import datetime
 #     user = db.relationship('User', backref=db.backref('trips', lazy=True))
 #     route = db.relationship('Route', backref=db.backref('trips', lazy=True))
 
-    def __init__(self, user_id, route_id):
-        self.user_id = user_id
-        self.route_id = route_id
+    # def __init__(self, user_id, route_id):
+    #     self.user_id = user_id
+    #     self.route_id = route_id
 
-    def __repr__(self):
-        return f'<{self.id}: {self.user_id}: {self.route_id}: {self.user}: {self: route}>'
+    # def __repr__(self):
+    #     return f'<{self.id}: {self.user_id}: {self.route_id}: {self.user}: {self: route}>'
     
 
    
