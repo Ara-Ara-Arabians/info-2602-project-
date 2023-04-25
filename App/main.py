@@ -1,6 +1,6 @@
 import os
-from flask import Flask
-from flask_login import LoginManager, current_user
+from flask import Flask, Blueprint, render_template,url_for, redirect, request, flash, make_response, jsonify
+from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 from flask_uploads import DOCUMENTS, IMAGES, TEXT, UploadSet, configure_uploads
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
@@ -27,6 +27,17 @@ def configure_app(app, config, overrides):
             app.config[key] = overrides[key]
         else:
             app.config[key] = config[key]
+
+login_manager = LoginManager()
+
+@login_manager.user_loader
+def load_user(user_id):
+  return User.query.get(user_id)
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    flash('Unauthorized!')
+    return redirect(url_for('login_page'))
 
 def create_app(config_overrides={}):
     app = Flask(__name__, static_url_path='/static')

@@ -24,12 +24,12 @@ def get_user_page():
 
 
 @auth_views.route('/identify', methods=['GET'])
-@login_required
+##@login_required
 def identify_page():
     return jsonify({'message': f"username: {current_user.username}, id : {current_user.id}"})
 
 @auth_views.route('/gohome', methods=['GET'])
-#@login_required
+##@login_required
 def go_home():
   return redirect('/')
 
@@ -46,7 +46,7 @@ def login_action():
   return redirect('/login')
 
 @auth_views.route('/logout', methods=['GET'])
-@login_required
+#@login_required
 def logout_action():
   logout_user()
   flash('Logged Out')

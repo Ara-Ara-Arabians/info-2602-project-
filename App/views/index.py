@@ -9,7 +9,7 @@ index_views = Blueprint('index_views', __name__, template_folder='../templates')
 
 
 @index_views.route('/', methods=['GET'])
-@login_required
+#@login_required
 def index_page():
 
     routelist = get_all_routes()
@@ -23,12 +23,12 @@ def init():
     return jsonify(message='db initialized!')
 
 @index_views.route('/route', methods=['GET'])
-@login_required
+#@login_required
 def route():
     return render_template('route.html')
 
 @index_views.route('/route', methods=['POST'])
-@login_required
+#@login_required
 def add_route():
     origin = request.form['origin']
     destination = request.form['destination']
@@ -44,7 +44,7 @@ def add_route():
     return redirect('/')
 
 @index_views.route('/routeinfo/<int:id>', methods = ['GET'])
-@login_required
+#@login_required
 def get_more_info(id):
     route = search_id(id)
     return render_template('routeinfo.html',  route = route)
@@ -56,7 +56,7 @@ def health_check():
 
 
 @index_views.route('/search', methods = ['POST'])
-@login_required
+#@login_required
 def search():
     word = request.form
     found = search_routes(word["search_term"])
@@ -65,7 +65,7 @@ def search():
     # return word["search_term"]
 
 @index_views.route('/filter', methods=['GET'])
-@login_required
+#@login_required
 def filter_routes():
     rsult = request.args.get('filter_button')
 
